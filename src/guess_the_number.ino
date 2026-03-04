@@ -202,3 +202,54 @@ void loop() {
     }
   }
 }
+// ---------- FUNCTIONS ----------
+
+void showStartScreen() {
+  lcd.clear();
+  lcd.print("Press D to");
+  lcd.setCursor(0,1);
+  lcd.print("Start Game");
+}
+
+void startMode(char mode) {
+  inputNumber = "";
+  tries = 5;
+  clearLEDs();
+
+  if (mode == 'A') {
+    secretNumber = random(1, 100); // 1–99
+    waitingForGuess = true;
+    showGuessScreen();
+  }
+}
+
+void showGuessScreen() {
+  lcd.clear();
+  lcd.print("Guess (");
+  lcd.print(tries);
+  lcd.print(" left)");
+  lcd.setCursor(0,1);
+}
+
+void endGame() {
+  waitingForGuess = false;
+  gameEnded = true;
+  lcd.setCursor(0,1);
+  lcd.print("D:Again C:Menu");
+}
+
+void resetGame() {
+  gameStarted = false;
+  waitingForUser1 = false;
+  waitingForGuess = false;
+  gameEnded = false;
+  inputNumber = "";
+  clearLEDs();
+  showStartScreen();
+}
+
+void clearLEDs() {
+  digitalWrite(GREEN, LOW);
+  digitalWrite(RED, LOW);
+  digitalWrite(ORANGE, LOW);
+}
