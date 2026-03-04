@@ -137,8 +137,68 @@ void loop() {
       lcd.clear();
       lcd.print("Pass to User2");
       delay(2000);
+      
 
       showGuessScreen();
     }
     return;
   }
+// guessing
+  if (waitingForGuess) {
+
+    if (key >= '0' && key <= '9') {
+      inputNumber += key;
+
+      lcd.setCursor(0,1);
+      lcd.print("                ");
+      lcd.setCursor(0,1);
+      lcd.print(inputNumber);
+    }
+
+    else if (key == '#') {
+
+      int guess = inputNumber.toInt();
+      inputNumber = "";
+      tries--;
+
+      lcd.clear();
+      clearLEDs();
+
+      if (guess == secretNumber) {
+        lcd.print("Correct!");
+        digitalWrite(GREEN, HIGH);
+        delay(2000);
+        digitalWrite(GREEN, LOW);
+        endGame();
+        return;
+      }
+
+      int difference = abs(guess - secretNumber);
+
+      if (difference <= 5) {
+        lcd.print("So Close!");
+        digitalWrite(ORANGE, HIGH);
+      }
+      else {
+        lcd.print(guess < secretNumber ? "Higher" : "Lower");
+        digitalWrite(RED, HIGH);
+      }
+
+      delay(1200);
+      clearLEDs();
+
+      if (tries == 0) {
+        lcd.clear();
+        lcd.print("Oops,try again!");
+        lcd.setCursor(0,1);
+        lcd.print("Num:");
+        lcd.print(secretNumber);
+        digitalWrite(RED, HIGH);
+        endGame();
+        return;
+      }
+
+      showGuessScreen();
+    }
+  }
+}
