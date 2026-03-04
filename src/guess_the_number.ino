@@ -36,3 +36,29 @@ bool waitingForUser1 = false;
 bool waitingForGuess = false;
 bool gameEnded = false;
 char currentMode = ' ';
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  randomSeed(analogRead(A0));
+
+  pinMode(GREEN, OUTPUT);
+  pinMode(RED, OUTPUT);
+  pinMode(ORANGE, OUTPUT);
+
+  clearLEDs();
+
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Greetings!!!");
+  lcd.setCursor(0,1);
+  lcd.print("Welcome Player");
+  delay(2000);
+  
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("#-->submit");
+  delay(1500);
+
+  showStartScreen();
+}
