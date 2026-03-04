@@ -62,3 +62,83 @@ void setup() {
 
   showStartScreen();
 }
+
+void loop() {
+
+  char key = keypad.getKey();
+  if (!key) return;
+
+  // game end
+  if (gameEnded) {
+    if (key == 'D') {
+      gameEnded = false;
+      startMode(currentMode);
+    }
+    else if (key == 'C') {
+      resetGame();
+    }
+    return;
+  }
+
+  // start
+  if (!gameStarted && key == 'D') {
+    gameStarted = true;
+    lcd.clear();
+    lcd.print("A: Random");
+    lcd.setCursor(0,1);
+    lcd.print("B: Set Number");
+    return;
+  }
+
+  // random mode
+  if (gameStarted && key == 'A') {
+    currentMode = 'A';
+    startMode('A');
+    return;
+  }
+
+  // user1 mode
+  if (gameStarted && key == 'B') {
+    currentMode = 'B';
+    waitingForUser1 = true;
+    inputNumber = "";
+    lcd.clear();
+    lcd.print("User1 Enter:");
+    lcd.setCursor(0,1);
+    return;
+  }
+
+  // user1 input
+  if (waitingForUser1) {
+
+    if (key >= '0' && key <= '9') {
+      if (inputNumber.length() < 2) {
+        inputNumber += key;
+
+        lcd.setCursor(0,1);
+        lcd.print("                ");
+        lcd.setCursor(0,1);
+
+        for (int i = 0; i < inputNumber.length(); i++) {
+          lcd.print("*");
+        }
+      }
+    }
+
+    else if (key == '#') {
+      if (inputNumber.length() == 0) return;
+
+      secretNumber = inputNumber.toInt();
+      waitingForUser1 = false;
+      waitingForGuess = true;
+      inputNumber = "";
+      tries = 5;
+
+      lcd.clear();
+      lcd.print("Pass to User2");
+      delay(2000);
+
+      showGuessScreen();
+    }
+    return;
+  }
