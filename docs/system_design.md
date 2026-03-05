@@ -202,3 +202,4 @@ These improvements can enhance both usability and educational value.
 
 The Guess The Number system design demonstrates how embedded systems can be used to develop interactive applications. The integration of input devices, processing logic, and output modules creates a complete system capable of guiding users through the guessing process. The design effectively combines hardware and software components to create an engaging learning tool for beginners in embedded systems and programming.
 
+![Hardware Setup](https://github.com/user-attachments/assets/08570750-bf62-4326-8d36-fc7ccc7f52b0)
