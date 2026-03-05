@@ -24,52 +24,52 @@ Programming Language	Arduino C/C++
 Test Case 1 – System Initialization
 Objective: Verify that the system starts correctly.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Power ON the Arduino
 Expected Result	LCD displays system startup message or prompt
 Actual Result	LCD shows game prompt
 Status	Pass
-Test Case 2 – Manual Number Entry Mode
+# Test Case 2 – Manual Number Entry Mode
 Objective: Verify that User 1 can set the secret number.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Press B on keypad
 Expected Result	System allows User 1 to enter a secret number
 Actual Result	System accepts input and stores number
 Status	Pass
-Test Case 3 – Random Number Mode
+# Test Case 3 – Random Number Mode
 Objective: Verify random number generation.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Press A on keypad
 Expected Result	Arduino generates a random number
 Actual Result	Random number stored by system
 Status	Pass
-Test Case 4 – Guess Higher Than Target
+# Test Case 4 – Guess Higher Than Target
 Objective: Verify system response when guessed number is greater.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Enter number higher than target
 Expected Result	LCD shows "Lower" and red LED turns ON
 Actual Result	LCD displays Lower and red LED glows
 Status	Pass
-Test Case 5 – Guess Lower Than Target
+# Test Case 5 – Guess Lower Than Target
 Objective: Verify system response when guessed number is lower.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Enter number lower than target
 Expected Result	LCD shows "Higher"
 Actual Result	LCD displays Higher
 Status	Pass
-Test Case 6 – Guess Close to Target
+# Test Case 6 – Guess Close to Target
 Objective: Verify "So Close" hint.
 
-# Parameter	Description
+ Parameter	Description
 Test Action	Enter number near the target value
 Expected Result	LCD displays "So Close" and yellow LED turns ON
 Actual Result	Correct message and LED indication
 Status	Pass
-Test Case 7 – Correct Guess
+# Test Case 7 – Correct Guess
 Objective: Verify correct guess condition.
 
 # Parameter	Description
@@ -83,4 +83,8 @@ Total Tests	Passed	Failed
 7	
 7	
 0
+
+# Conclusion
+
+The Guess The Number system was successfully tested under different scenarios including manual number entry, random number generation, and multiple guessing conditions. The system correctly provides feedback using both LCD messages and LED indicators. The testing confirms that the project functions reliably and meets the intended design requirements.
 (To be completed by Documentation Team)
