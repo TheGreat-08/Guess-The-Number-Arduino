@@ -91,3 +91,7 @@ This platform allows testing of the circuit and code before implementing it on p
 # Conclusion
 
 The hardware setup integrates input devices, processing hardware, and output indicators to create an interactive embedded system. The combination of Arduino, keypad, LCD, and LED indicators ensures clear communication between the system and the user during gameplay.
+
+# Hardware Setup
+
+![Hardware Setup](https://github.com/user-attachments/assets/8bc28515-15f3-405b-9713-57c094a4ffe5)
